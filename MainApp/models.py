@@ -86,6 +86,6 @@ class KeySignatureNote(models.Model):
     keySignature = models.ForeignKey(KeySignature)
     order = models.PositiveIntegerField(default=0)
 
-    # def __str__(self):
-    #     return self.keySignature
+    def __str__(self):
+        return 'Key: ' + self.keySignature.rootNote.name + ', Note: ' + self.note.name
 
