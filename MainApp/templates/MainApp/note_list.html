@@ -9,16 +9,32 @@
         <h1><a href="">Musik Web App</a></h1>
     </div>
 
-    <div>
-        <p>published: 14.06.2014, 12:14</p>
-        <h2><a href="">My first post</a></h2>
-        <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-    </div>
+    {% for keySignature in keySignatures %}
+        <div>
+            <p>Key: {{ keySignature.rootNote }} </p>
+            <ul>
+                {% for n in keySignature.notes.all %}
+                    <li>{{ n.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
 
-    <div>
-        <p>published: 14.06.2014, 12:14</p>
-        <h2><a href="">My second post</a></h2>
-        <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-    </div>
+    {% endfor %}
+
+
+{% comment %}{% block content %}
+  {% for newsletter in newsletter_list %}
+    <h2>{{ newsletter.label }}</h2>
+    <p>Volume {{ newsletter.volume }}, Number {{ newsletter.number }}</p>
+    <p>{{ newsletter.article }}</p>
+    <ul>
+    {% for a in newsletter.article_set.all %}
+      <li>{{ a.title }}</li>
+    {% endfor %}
+    </ul>
+  {% endfor %}
+{% endblock %}{% endcomment %}
+
+
 </body>
 </html>
